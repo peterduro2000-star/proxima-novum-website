@@ -266,15 +266,11 @@ section {
 }
 
 .detail-image {
-    background: var(--bg-light);
     border-radius: 24px;
-    padding: 2rem;
-    border: 1px dashed var(--text-light);
     min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-light);
     box-shadow: var(--shadow-md);
 }
 
