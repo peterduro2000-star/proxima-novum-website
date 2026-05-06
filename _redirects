@@ -1,0 +1,5 @@
+# Redirect default Netlify subdomain to primary domain if needed
+# https://proxima-novum.netlify.app/* https://proximanovum.com/:splat 301!
+
+# Example redirect for old paths
+# /old-path /new-path 301
