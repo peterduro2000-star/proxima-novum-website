@@ -1,290 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxima Novum | Practical Business Apps for African SMEs</title>
-    <meta name="description" content="Offline-first tools for African tailors, builders, tilers, and farmers. Manage customers, measurements, orders, and costs with Proxima Novum.">
+/* 
+   Proxima Novum / NOVUM IMPACTA
+   Main Stylesheet
+*/
+
+:root {
+    --primary-color: #0f172a; /* Deep Slate */
+    --accent-color: #2563eb;  /* Professional Blue */
+    --accent-hover: #1d4ed8;
+    --text-color: #334155;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+    --bg-white: #ffffff;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --radius: 8px;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navigation */
+header {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero {
+    padding: 6rem 0;
+    text-align: center;
+    background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-light);
+    border-color: var(--text-light);
+}
+
+/* Sections */
+section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.section-title p {
+    color: var(--text-light);
+    font-size: 1.125rem;
+}
+
+/* App Cards */
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.app-card {
+    background: var(--bg-white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.app-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.app-card h3 {
+    margin-bottom: 0.75rem;
+}
+
+.app-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.app-features {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.app-features li {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.app-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+/* Why Us Section */
+.why-us {
+    background: var(--primary-color);
+    color: white;
+}
+
+.why-us h2 {
+    color: white;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.feature-item h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.feature-item p {
+    color: #94a3b8;
+}
+
+/* App Detail Section */
+.app-detail {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.app-detail:last-of-type {
+    border-bottom: none;
+}
+
+.detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.detail-image {
+    background: var(--bg-light);
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px dashed var(--text-light);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    box-shadow: var(--shadow-md);
+}
+
+.detail-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.detail-badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: var(--accent-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.download-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Privacy & Trust */
+.privacy-trust {
+    background: #f1f5f9;
+    text-align: center;
+}
+
+.privacy-card {
+    background: white;
+    padding: 3rem;
+    border-radius: var(--radius);
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Contact */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-info {
+    padding: 2rem;
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+/* Footer */
+footer {
+    padding: 4rem 0 2rem;
+    background: var(--primary-color);
+    color: #94a3b8;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-brand h4 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.footer-links h4 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid #1e293b;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
     
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://proximanovum.com/">
-    <meta property="og:title" content="Proxima Novum | Practical Business Apps for African SMEs">
-    <meta property="og:description" content="Offline-first tools for African artisans and small business owners.">
-    <meta property="og:image" content="assets/images/og-image.png">
-
-    <!-- Favicon Placeholder -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    .nav-links {
+        display: none;
+    }
     
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">Proxima Novum</a>
-                <div class="nav-links">
-                    <a href="#apps">Apps</a>
-                    <a href="#why-us">Why Us</a>
-                    <a href="#contact">Support</a>
-                    <a href="privacy.html">Privacy</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>Practical Business Apps for African SMEs and Artisans</h1>
-                <p>Offline-first tools that help tailors, builders, tilers, poultry farmers, and small business owners calculate, record, manage, and grow their work.</p>
-                <div class="btn-group">
-                    <a href="#apps" class="btn btn-primary">View Apps</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Support</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Apps Overview Section -->
-        <section id="apps" class="apps-overview">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Our Productivity Suite</h2>
-                    <p>Reliable tools built for real workers in real-world conditions.</p>
-                </div>
-                <div class="apps-grid">
-                    <!-- TailorPro -->
-                    <div class="app-card">
-                        <img src="assets/images/tailorpro-icon.png" alt="TailorPro Icon" class="app-icon">
-                        <h3>TailorPro</h3>
-                        <p>Complete tailoring business manager for customers, measurements, and orders.</p>
-                        <ul class="app-features">
-                            <li>Customer & Measurement tracking</li>
-                            <li>Order & Payment management</li>
-                            <li>Due date alerts & Receipts</li>
-                        </ul>
-                        <a href="apps/tailorpro.html" class="btn btn-secondary">Learn More</a>
-                    </div>
-                    <!-- Tilemate -->
-                    <div class="app-card">
-                        <img src="assets/images/tilemate-icon.png" alt="Tilemate Icon" class="app-icon">
-                        <h3>Tilemate</h3>
-                        <p>Precision tile estimation for calculating materials, labor, and costs.</p>
-                        <ul class="app-features">
-                            <li>Area & Grout calculations</li>
-                            <li>Wastage & Labor estimation</li>
-                            <li>Client-ready estimates</li>
-                        </ul>
-                        <a href="apps/tilemate.html" class="btn btn-secondary">Learn More</a>
-                    </div>
-                    <!-- RoofMate -->
-                    <div class="app-card">
-                        <img src="assets/images/roofmate-icon.png" alt="RoofMate Icon" class="app-icon">
-                        <h3>RoofMate</h3>
-                        <p>Professional roofing estimation and BOQ-style quotation generator.</p>
-                        <ul class="app-features">
-                            <li>Roof area & Material calculation</li>
-                            <li>BOQ-style PDF generation</li>
-                            <li>Professional costing</li>
-                        </ul>
-                        <a href="apps/roofmate.html" class="btn btn-secondary">Learn More</a>
-                    </div>
-                    <!-- Poultry Pro -->
-                    <div class="app-card">
-                        <img src="assets/images/poultrypro-icon.png" alt="Poultry Pro Icon" class="app-icon">
-                        <h3>Poultry Pro</h3>
-                        <p>Smart farm management for flock records, sales, and profitability.</p>
-                        <ul class="app-features">
-                            <li>Flock & Mortality records</li>
-                            <li>Feed & Expense tracking</li>
-                            <li>Break-even & Profit analysis</li>
-                        </ul>
-                        <a href="apps/poultrypro.html" class="btn btn-secondary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Our Apps Section -->
-        <section id="why-us" class="why-us">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Built for Your Reality</h2>
-                    <p>Why thousands of African artisans trust Proxima Novum apps.</p>
-                </div>
-                <div class="features-list">
-                    <div class="feature-item">
-                        <h3>Offline-First</h3>
-                        <p>Works perfectly without internet. Your data is always available, even in remote areas.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Simple to Use</h3>
-                        <p>Clean interfaces designed for busy workers who need to get things done quickly.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>PDF & Sharing</h3>
-                        <p>Generate professional quotes and receipts to share with clients via WhatsApp instantly.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Optimized Performance</h3>
-                        <p>Lightweight apps that run smoothly even on low-end Android devices.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- App Details (One section per app as requested) -->
-        <section class="app-detail" id="tailorpro">
-            <div class="container">
-                <div class="detail-container">
-                    <div class="detail-content">
-                        <span class="detail-badge">Tailoring</span>
-                        <h3>TailorPro</h3>
-                        <p><strong>For:</strong> Professional Tailors and Fashion Designers.</p>
-                        <p>Take your tailoring business from paper notebooks to a digital powerhouse. TailorPro helps you keep track of every customer's unique measurements, manage complex orders, and never miss a delivery date again.</p>
-                        <div class="download-links">
-                            <a href="#" class="btn btn-primary">Google Play</a>
-                            <a href="#" class="btn btn-secondary">Palmstore</a>
-                            <a href="#" class="btn btn-secondary">Download APK</a>
-                        </div>
-                    </div>
-                    <div class="detail-image">
-                        <img src="assets/images/tailorpro-screenshot1.png" alt="TailorPro Screenshot">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="app-detail" id="tilemate">
-            <div class="container">
-                <div class="detail-container">
-                    <div class="detail-image">
-                        <img src="assets/images/tilemate-screenshot1.png" alt="Tilemate Screenshot">
-                    </div>
-                    <div class="detail-content">
-                        <span class="detail-badge">Construction</span>
-                        <h3>Tilemate</h3>
-                        <p><strong>For:</strong> Tilers, Contractors, and Home Owners.</p>
-                        <p>Stop guessing and start calculating. Tilemate provides accurate estimations for tiles, grout, and labor. Reduce wastage and provide professional estimates to your clients on the spot.</p>
-                        <div class="download-links">
-                            <a href="#" class="btn btn-primary">Google Play</a>
-                            <a href="#" class="btn btn-secondary">Palmstore</a>
-                            <a href="#" class="btn btn-secondary">Download APK</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="app-detail" id="roofmate">
-            <div class="container">
-                <div class="detail-container">
-                    <div class="detail-content">
-                        <span class="detail-badge">Roofing</span>
-                        <h3>RoofMate</h3>
-                        <p><strong>For:</strong> Roofing Engineers and Building Contractors.</p>
-                        <p>Generate professional BOQ-style quotations in minutes. RoofMate handles the complex geometry of roof area calculations and material requirements, so you can focus on the build.</p>
-                        <div class="download-links">
-                            <a href="#" class="btn btn-primary">Google Play</a>
-                            <a href="#" class="btn btn-secondary">Palmstore</a>
-                            <a href="#" class="btn btn-secondary">Download APK</a>
-                        </div>
-                    </div>
-                    <div class="detail-image">
-                        <img src="assets/images/roofmate-screenshot1.png" alt="RoofMate Screenshot">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="app-detail" id="poultrypro">
-            <div class="container">
-                <div class="detail-container">
-                    <div class="detail-image">
-                        <img src="assets/images/poultrypro-screenshot1.png" alt="Poultry Pro Screenshot">
-                    </div>
-                    <div class="detail-content">
-                        <span class="detail-badge">Agriculture</span>
-                        <h3>Poultry Pro</h3>
-                        <p><strong>For:</strong> Poultry Farmers and Farm Managers.</p>
-                        <p>Data-driven farming made simple. Track your flock from day-old chicks to sale. Monitor feed consumption, mortality rates, and expenses to ensure your farm stays profitable.</p>
-                        <div class="download-links">
-                            <a href="#" class="btn btn-primary">Google Play</a>
-                            <a href="#" class="btn btn-secondary">Palmstore</a>
-                            <a href="#" class="btn btn-secondary">Download APK</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Privacy & Trust Section -->
-        <section class="privacy-trust">
-            <div class="container">
-                <div class="privacy-card">
-                    <h2>Your Data, Your Trust</h2>
-                    <p>At Proxima Novum, we build tools that respect your privacy. Our apps are designed to work <strong>offline-first</strong>, meaning your business data stays on your device.</p>
-                    <p>Cloud features are only used for secure login, data backup, and cross-device sync where you've explicitly enabled them. We never sell your personal or business data.</p>
-                    <a href="privacy.html" class="btn btn-secondary" style="margin-top: 1.5rem;">Read Full Privacy Policy</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Support & Contact</h2>
-                    <p>We're here to help you grow your business.</p>
-                </div>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Email Support</h3>
-                        <p>For technical issues, feedback, or business inquiries:</p>
-                        <a href="mailto:duropeter.dev@gmail.com" style="color: var(--accent-color); font-weight: 600;">duropeter.dev@gmail.com</a>
-                    </div>
-                    <div class="contact-info">
-                        <h3>WhatsApp Support</h3>
-                        <p>Get quick help via WhatsApp chat:</p>
-                        <a href="https://wa.me/234XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 1rem; background-color: #25d366; border: none;">Chat on WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h4>Proxima Novum</h4>
-                    <p>NOVUM IMPACTA</p>
-                    <p>Practical tools for the modern African artisan.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#apps">Apps</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="#contact">Contact Support</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Proxima Novum / NOVUM IMPACTA. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-</body>
-</html>
+    .detail-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .detail-image {
+        order: -1;
+    }
+}
